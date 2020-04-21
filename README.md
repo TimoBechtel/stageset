@@ -59,7 +59,7 @@ import { onStage } from 'stageset';
 onStage('.scroll-fade').toggle('fade-in');
 ```
 
-### ✨ <a href="https://timobechtel.github.io/oh-snack">View Demo</a>
+### ✨ <a href="https://timobechtel.github.io/stageset">View Demo</a>
 
 ```typescript
 /**
