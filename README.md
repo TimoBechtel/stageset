@@ -1,4 +1,4 @@
-<h1 align="center">🎭 stageset</h1>
+<h1 align="center">🎭 <br> stageset</h1>
 <h3 align="center">Trigger actions when elements enter or exit the browser stage / viewport.</h3>
 <p align="center">
   <a href="https://www.npmjs.com/package/stageset" target="_blank">
@@ -18,7 +18,7 @@
   ·
 </p>
 
-**stage set** - all of the scenery and props used on stage to create a particular scene
+> **stage set** - all of the scenery and props used on stage to create a particular scene
 
 Manage props entering or leaving a scene.
 
