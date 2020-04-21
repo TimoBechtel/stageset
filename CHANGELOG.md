@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/TimoBechtel/stageset/compare/v1.0.1...v1.0.2) (2020-04-21)
+
+
+### Bug Fixes
+
+* **example:** fix link ([8f27c4a](https://github.com/TimoBechtel/stageset/commit/8f27c4a335dfc7fad59f62126fab5cf7ef656148))
+
 ## [1.0.1](https://github.com/TimoBechtel/stageset/compare/v1.0.0...v1.0.1) (2020-04-21)
 
 
