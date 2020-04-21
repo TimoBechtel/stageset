@@ -1,0 +1,46 @@
+{
+  "name": "stageset",
+  "version": "0.0.1",
+  "description": "Trigger actions when elements enter or exit the browser stage / viewport.",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "unpkg": "dist/index.umd.js",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "build": "microbundle && npm run build:example",
+    "build:example": "microbundle build -f es -o example/dist/index.mjs",
+    "dev": "microbundle watch -f es -o example/dist/index.mjs",
+    "prepare": "npm run build",
+    "lint": "eslint src",
+    "test": "npm run lint"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimoBechtel/stageset.git"
+  },
+  "keywords": [
+    "javascript",
+    "stageset",
+    "scroll",
+    "viewport",
+    "dom"
+  ],
+  "author": "Timo Bechtel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TimoBechtel/stageset/issues"
+  },
+  "homepage": "https://github.com/TimoBechtel/stageset#readme",
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "eslint": "^6.8.0",
+    "microbundle": "^0.12.0-next.8",
+    "semantic-release": "^17.0.4"
+  }
+}
