@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/TimoBechtel/stageset/compare/v1.0.2...v1.1.0) (2020-05-31)
+
+
+### Features
+
+* **scrolling:** add feature to react to scroll position ([0b48f49](https://github.com/TimoBechtel/stageset/commit/0b48f49a04915a0ca7bfe1aae8e373582b49f18b))
+
 ## [1.0.2](https://github.com/TimoBechtel/stageset/compare/v1.0.1...v1.0.2) (2020-04-21)
 
 ### Bug Fixes
