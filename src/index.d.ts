@@ -46,12 +46,38 @@ interface OnViewAPI {
    * Stop observing
    */
   end(): OnViewAPI;
+}
 
+interface OnEnterViewAPI extends OnViewAPI {
+  addClass(className: string): OnEnterViewAPI;
+  removeClass(className: string): OnEnterViewAPI;
+  toggle(className: string): OnEnterViewAPI;
+  do(fun: (element: HTMLElement) => void): OnEnterViewAPI;
+  end(): OnEnterViewAPI;
+
+  /**
+   * Use it to react to scroll events.
+   * It passed a relative progress variable to the callback function, that will be between 0 and 1.
+   * Everything between 0 and 1 means the element is in the visible area
+   * 0 = below visible area
+   * 1 = above visible area
+   * @param callback This callback will be called with a relative progress between 0-1
+   */
+  onScrollProgress(
+    callback: (progress: number, element: HTMLElement) => void
+  ): OnEnterViewAPI;
   /**
    * Actions to do when scrolled out of view
    * Same api as when scrolled into view
    */
-  else: OnViewAPI;
+  else: OnLeaveViewAPI;
+}
+interface OnLeaveViewAPI extends OnViewAPI {
+  addClass(className: string): OnLeaveViewAPI;
+  removeClass(className: string): OnLeaveViewAPI;
+  toggle(className: string): OnLeaveViewAPI;
+  do(fun: (element: HTMLElement) => void): OnLeaveViewAPI;
+  end(): OnLeaveViewAPI;
 }
 
 /**
@@ -64,4 +90,4 @@ interface OnViewAPI {
 export function onStage(
   actors: HTMLElement | HTMLElement[] | string,
   options?: IntersectionObserverOptions
-): OnViewAPI;
+): OnEnterViewAPI;

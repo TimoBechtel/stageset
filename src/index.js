@@ -1,3 +1,6 @@
+import { scrollListener } from './scrollListener';
+import { cap } from '@compactjs/cap';
+
 export const onStage = (actors, options) => {
   const _elements =
     typeof actors === 'string'
@@ -59,6 +62,33 @@ export const onStage = (actors, options) => {
 
   return {
     ...api(onStageCallstack),
+    onScrollProgress(callback) {
+      onStageCallstack.push((element) => {
+        const windowHeight = document.documentElement.clientHeight;
+        const startVisible = element.offsetTop - windowHeight;
+        const endVisible = element.offsetTop + element.offsetHeight;
+
+        const distance = endVisible - startVisible;
+
+        const scrollCallback = () => {
+          const currentRelativeScroll =
+            (window.pageYOffset || document.documentElement.scrollTop) -
+            startVisible;
+
+          const progress = currentRelativeScroll / distance;
+
+          callback(cap(progress, 0, 1), element);
+        };
+        element.scrollCallback = scrollCallback;
+        scrollListener.add(scrollCallback);
+        scrollCallback();
+      });
+      leaveStageCallstack.push((element) => {
+        if (element.scrollCallback)
+          scrollListener.remove(element.scrollCallback);
+      });
+      return this;
+    },
     else: {
       ...api(leaveStageCallstack),
     },
