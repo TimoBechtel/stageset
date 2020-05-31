@@ -1,76 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/transition-master@1.0.0/dist/index.umd.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
-    <title>🎭 Stageset</title>
-  </head>
-  <body>
-    <style>
-      body {
-        text-align: center;
-        height: 3000px;
-      }
-      article {
-        margin-top: 90vh;
-      }
-      p {
-        margin-bottom: 200px;
-      }
-      p.scroll-fade {
-        transform: translateX(-50px);
-        opacity: 0;
-        transition: 1s ease-in-out;
-      }
-      p.visible {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    </style>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://unpkg.com/transition-master@1.0.0/dist/index.umd.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+		<title>🎭 Stageset</title>
+	</head>
+	<body>
+		<style>
+			body {
+				text-align: center;
+				height: 3000px;
+			}
+			article {
+				margin-top: 90vh;
+			}
+			p {
+				margin-bottom: 200px;
+			}
+			p.scroll-fade {
+				transform: translateX(-50px);
+				opacity: 0;
+				transition: 1s ease-in-out;
+			}
+			p.visible {
+				transform: translateX(0);
+				opacity: 1;
+			}
+		</style>
 
-    <main>
-      <header>
-        <h1>🎭 Stageset</h1>
-        <a href="https://github.com/TimoBechtel/stageset">Github</a>
-      </header>
-      <h2>Try scrolling</h2>
-      <article>
-        <p class="scroll-fade"><mark>This text fades in.</mark></p>
-        <p class="scroll-fade"><mark>This one too.</mark></p>
-        <p class="rotates"><mark>This one rotates on scroll</mark></p>
-        <p id="no-fade">This text does not do anything.</p>
-      </article>
-    </main>
+		<main>
+			<header>
+				<h1>🎭 Stageset</h1>
+				<a href="https://github.com/TimoBechtel/stageset">Github</a>
+			</header>
+			<h2>Try scrolling</h2>
+			<article>
+				<p class="scroll-fade"><mark>This text fades in.</mark></p>
+				<p class="scroll-fade"><mark>This one too.</mark></p>
+				<p class="rotates"><mark>This one rotates on scroll</mark></p>
+				<p id="no-fade">This text does not do anything.</p>
+			</article>
+		</main>
 
-    <script type="module">
-      import { onStage } from './dist/index.module.js';
+		<script type="module">
+			import { onStage } from './dist/index.module.js';
 
-      const { Transition, rotate, scale } = transitionMaster;
-      const animation = Transition(document.querySelector('.rotates'), 100);
-      animation.addKeyframe([rotate(360), scale(1.5)], 0.1, 0.7);
+			const { Transition, rotate, scale } = transitionMaster;
+			const animation = Transition(document.querySelector('.rotates'), 100);
+			animation.addKeyframe([rotate(360), scale(1.5)], 0.1, 0.7);
 
-      const heading = document.querySelector('h2');
-      const intervall = setInterval(() => (heading.innerHTML += '!'), 1000);
+			const heading = document.querySelector('h2');
+			const intervall = setInterval(() => (heading.innerHTML += '!'), 1000);
 
-      onStage('.scroll-fade')
-        .toggle('visible')
-        .do(() => clearInterval(intervall));
+			onStage('.scroll-fade')
+				.toggle('visible')
+				.do(() => clearInterval(intervall));
 
-      onStage('.rotates')
-        .toggle('visible')
-        .onScrollProgress((progress, element) => {
-          animation.set(progress * 100);
-          console.log(progress);
-        });
+			onStage('.rotates')
+				.toggle('visible')
+				.onScrollProgress((progress, element) => {
+					animation.set(progress * 100);
+					console.log(progress);
+				});
 
-      onStage('#no-fade').do(() =>
-        console.log('I do only log into console once.')
-      );
-      onStage('#no-fade')
-        .do((e) => console.log("Hi, I'm visible! 👋 \nYour " + e))
-        .else.do((e) => console.log("Hi, I'm invisible! \nYour " + e));
-    </script>
-  </body>
+			onStage('#no-fade').do(() =>
+				console.log('I do only log into console once.')
+			);
+			onStage('#no-fade')
+				.do((e) => console.log("Hi, I'm visible! 👋 \nYour " + e))
+				.else.do((e) => console.log("Hi, I'm invisible! \nYour " + e));
+		</script>
+	</body>
 </html>

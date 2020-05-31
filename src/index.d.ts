@@ -9,75 +9,75 @@ declare module 'stageset';
  * a one-pixel change is enough to trigger a callback)
  */
 interface IntersectionObserverOptions {
-  root: HTMLElement;
-  rootMargin: string;
-  threshold: number | number[];
+	root: HTMLElement;
+	rootMargin: string;
+	threshold: number | number[];
 }
 
 /**
  * Chainable actions when scrolled into or out of view
  */
 interface OnViewAPI {
-  /**
-   * Add class when scrolled into/out of view
-   * @param className
-   */
-  addClass(className: string): OnViewAPI;
+	/**
+	 * Add class when scrolled into/out of view
+	 * @param className
+	 */
+	addClass(className: string): OnViewAPI;
 
-  /**
-   * Remove class when scrolled into/out of view
-   * @param className
-   */
-  removeClass(className: string): OnViewAPI;
+	/**
+	 * Remove class when scrolled into/out of view
+	 * @param className
+	 */
+	removeClass(className: string): OnViewAPI;
 
-  /**
-   * Toggles a class name when scrolled into/out of view
-   * @param className
-   */
-  toggle(className: string): OnViewAPI;
+	/**
+	 * Toggles a class name when scrolled into/out of view
+	 * @param className
+	 */
+	toggle(className: string): OnViewAPI;
 
-  /**
-   * What to do when scrolled into/out of view
-   * @param fun callback function
-   */
-  do(fun: (element: HTMLElement) => void): OnViewAPI;
+	/**
+	 * What to do when scrolled into/out of view
+	 * @param fun callback function
+	 */
+	do(fun: (element: HTMLElement) => void): OnViewAPI;
 
-  /**
-   * Stop observing
-   */
-  end(): OnViewAPI;
+	/**
+	 * Stop observing
+	 */
+	end(): OnViewAPI;
 }
 
 interface OnEnterViewAPI extends OnViewAPI {
-  addClass(className: string): OnEnterViewAPI;
-  removeClass(className: string): OnEnterViewAPI;
-  toggle(className: string): OnEnterViewAPI;
-  do(fun: (element: HTMLElement) => void): OnEnterViewAPI;
-  end(): OnEnterViewAPI;
+	addClass(className: string): OnEnterViewAPI;
+	removeClass(className: string): OnEnterViewAPI;
+	toggle(className: string): OnEnterViewAPI;
+	do(fun: (element: HTMLElement) => void): OnEnterViewAPI;
+	end(): OnEnterViewAPI;
 
-  /**
-   * Use it to react to scroll events.
-   * It passed a relative progress variable to the callback function, that will be between 0 and 1.
-   * Everything between 0 and 1 means the element is in the visible area
-   * 0 = below visible area
-   * 1 = above visible area
-   * @param callback This callback will be called with a relative progress between 0-1
-   */
-  onScrollProgress(
-    callback: (progress: number, element: HTMLElement) => void
-  ): OnEnterViewAPI;
-  /**
-   * Actions to do when scrolled out of view
-   * Same api as when scrolled into view
-   */
-  else: OnLeaveViewAPI;
+	/**
+	 * Use it to react to scroll events.
+	 * It passed a relative progress variable to the callback function, that will be between 0 and 1.
+	 * Everything between 0 and 1 means the element is in the visible area
+	 * 0 = below visible area
+	 * 1 = above visible area
+	 * @param callback This callback will be called with a relative progress between 0-1
+	 */
+	onScrollProgress(
+		callback: (progress: number, element: HTMLElement) => void
+	): OnEnterViewAPI;
+	/**
+	 * Actions to do when scrolled out of view
+	 * Same api as when scrolled into view
+	 */
+	else: OnLeaveViewAPI;
 }
 interface OnLeaveViewAPI extends OnViewAPI {
-  addClass(className: string): OnLeaveViewAPI;
-  removeClass(className: string): OnLeaveViewAPI;
-  toggle(className: string): OnLeaveViewAPI;
-  do(fun: (element: HTMLElement) => void): OnLeaveViewAPI;
-  end(): OnLeaveViewAPI;
+	addClass(className: string): OnLeaveViewAPI;
+	removeClass(className: string): OnLeaveViewAPI;
+	toggle(className: string): OnLeaveViewAPI;
+	do(fun: (element: HTMLElement) => void): OnLeaveViewAPI;
+	end(): OnLeaveViewAPI;
 }
 
 /**
@@ -88,6 +88,6 @@ interface OnLeaveViewAPI extends OnViewAPI {
  * @example onView('.my-class').toggle('visible')M
  */
 export function onStage(
-  actors: HTMLElement | HTMLElement[] | string,
-  options?: IntersectionObserverOptions
+	actors: HTMLElement | HTMLElement[] | string,
+	options?: IntersectionObserverOptions
 ): OnEnterViewAPI;
