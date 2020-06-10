@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="https://unpkg.com/transition-master@1.0.0/dist/index.umd.js"></script>
+		<script src="https://unpkg.com/transition-magic@1.0.0/dist/index.umd.js"></script>
 		<link rel="stylesheet" href="https://unpkg.com/mvp.css" />
 		<title>🎭 Stageset</title>
 	</head>
@@ -47,7 +47,7 @@
 		<script type="module">
 			import { onStage } from './dist/index.module.js';
 
-			const { Transition, rotate, scale } = transitionMaster;
+			const { Transition, rotate, scale } = transitionMagic;
 			const animation = Transition(document.querySelector('.rotates'), 100);
 			animation.addKeyframe([rotate(360), scale(1.5)], 0.1, 0.7);
 
