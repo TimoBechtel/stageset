@@ -4,7 +4,7 @@
   <a href="https://www.npmjs.com/package/stageset" target="_blank">
     <img alt="Version" src="https://img.shields.io/npm/v/stageset.svg">
   </a>
-  <a href="https://github.com/TimoBechtel/stageset/blob/master/LICENSE" target="_blank">
+  <a href="https://github.com/TimoBechtel/stageset/blob/main/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/github/license/TimoBechtel/stageset" />
   </a>
 </p>
@@ -174,7 +174,7 @@ onStage(document.getElementById('my-element')).do(
 onStage('.my-classes').addClass('slide-in');
 ```
 
-Also check out the [example](https://github.com/TimoBechtel/stageset/blob/master/example/index.html) file.
+Also check out the [example](https://github.com/TimoBechtel/stageset/blob/main/example/index.html) file.
 
 ## Run tests
 
@@ -212,7 +212,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Distributed under the [MIT](https://github.com/TimoBechtel/stageset/blob/master/LICENSE) License.
+Distributed under the [MIT](https://github.com/TimoBechtel/stageset/blob/main/LICENSE) License.
 
 ---
 
