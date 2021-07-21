@@ -75,7 +75,7 @@ onStage('#my-element').onScrollProgress((progress, element) => {
  */
 function onStage(
 	// you can pass elements as: an array, a single element, a css selector string and more; see: https://github.com/CompactJS/uea#doc
-	actors: actors: UniversalElementSelector,
+	actors: UniversalElementSelector,
 	options?: IntersectionObserverOptions
 ): OnEnterViewAPI;
 
@@ -88,9 +88,9 @@ function onStage(
  * a one-pixel change is enough to trigger a callback)
  */
 interface IntersectionObserverOptions {
-	root: HTMLElement;
-	rootMargin: string;
-	threshold: number | number[];
+	root?: HTMLElement;
+	rootMargin?: string;
+	threshold?: number | number[];
 }
 
 /**
