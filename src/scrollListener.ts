@@ -1,24 +1,30 @@
+export type ScrollListener = (event: Event) => void;
+
 let attached = false;
-const scrollCallbacks = new Set();
-const eventListener = (event) => {
+const scrollCallbacks = new Set<ScrollListener>();
+
+function eventListener(event: Event) {
 	scrollCallbacks.forEach((callback) => {
 		callback(event);
 	});
-};
-const attach = () => {
+}
+
+function attach() {
 	window.addEventListener('scroll', eventListener);
 	attached = true;
-};
-const destroy = () => {
+}
+
+function destroy() {
 	window.removeEventListener('scroll', eventListener);
 	attached = false;
-};
+}
+
 export const scrollListener = {
-	add(callback) {
+	add(callback: ScrollListener) {
 		scrollCallbacks.add(callback);
 		if (!attached) attach();
 	},
-	remove(callback) {
+	remove(callback: ScrollListener) {
 		scrollCallbacks.delete(callback);
 		if (attached && scrollCallbacks.size === 0) destroy();
 	},
