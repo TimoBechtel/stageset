@@ -112,9 +112,9 @@ export function onStage(
  * a one-pixel change is enough to trigger a callback)
  */
 interface IntersectionObserverOptions {
-	root: HTMLElement;
-	rootMargin: string;
-	threshold: number | number[];
+	root?: HTMLElement;
+	rootMargin?: string;
+	threshold?: number | number[];
 }
 
 interface OnEnterViewAPI extends OnViewAPI<OnEnterViewAPI> {
