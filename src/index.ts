@@ -17,15 +17,17 @@ export function onStage(
 	const leaveStageCallstack: ((element: ExtendedHTMLElement) => void)[] = [];
 
 	const observer = new IntersectionObserver((entries) => {
-		entries.forEach((entry) => {
-			if (entry.intersectionRatio > 0) {
-				onStageCallstack.forEach((c) => c(entry.target as HTMLElement));
-				if (leaveStageCallstack.length <= 0) {
-					observer.unobserve(entry.target);
+		requestAnimationFrame(() => {
+			entries.forEach((entry) => {
+				if (entry.intersectionRatio > 0) {
+					onStageCallstack.forEach((c) => c(entry.target as HTMLElement));
+					if (leaveStageCallstack.length <= 0) {
+						observer.unobserve(entry.target);
+					}
+				} else {
+					leaveStageCallstack.forEach((c) => c(entry.target as HTMLElement));
 				}
-			} else {
-				leaveStageCallstack.forEach((c) => c(entry.target as HTMLElement));
-			}
+			});
 		});
 	}, options);
 
