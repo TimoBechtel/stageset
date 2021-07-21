@@ -1,3 +1,20 @@
+# [1.2.0](https://github.com/TimoBechtel/stageset/compare/v1.1.0...v1.2.0) (2021-07-21)
+
+
+### Bug Fixes
+
+* **ts:** intersectionObserverOptions always requiring all options ([9e815e9](https://github.com/TimoBechtel/stageset/commit/9e815e998bd044aaa10aca39ebbcc13d784f0f53))
+
+
+### Features
+
+* add more options to select html elements ([69e5f03](https://github.com/TimoBechtel/stageset/commit/69e5f0397ffe36fd40022044ee604c6ebf83aefa))
+
+
+### Performance Improvements
+
+* make animations more efficient by wrapping them in requestAnimationFrame ([bb6c49d](https://github.com/TimoBechtel/stageset/commit/bb6c49d2b8fce3326afbebda8d3ec9d0af162f77))
+
 # [1.1.0](https://github.com/TimoBechtel/stageset/compare/v1.0.2...v1.1.0) (2020-05-31)
 
 
