@@ -74,7 +74,8 @@ onStage('#my-element').onScrollProgress((progress, element) => {
  * @example onView('.my-class').toggle('visible')M
  */
 function onStage(
-	actors: HTMLElement | HTMLElement[] | string,
+	// you can pass elements as: an array, a single element, a css selector string and more; see: https://github.com/CompactJS/uea#doc
+	actors: actors: UniversalElementSelector,
 	options?: IntersectionObserverOptions
 ): OnEnterViewAPI;
 

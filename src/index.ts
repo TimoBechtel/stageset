@@ -1,4 +1,5 @@
 import { cap } from '@compactjs/cap';
+import { select, UniversalElementSelector } from '@compactjs/uea';
 import { ScrollListener, scrollListener } from './scrollListener';
 
 /**
@@ -9,16 +10,9 @@ import { ScrollListener, scrollListener } from './scrollListener';
  * @example onView('.my-class').toggle('visible')M
  */
 export function onStage(
-	actors: HTMLElement | HTMLElement[] | string,
+	actors: UniversalElementSelector,
 	options?: IntersectionObserverOptions
 ): OnEnterViewAPI {
-	const _elements =
-		typeof actors === 'string'
-			? Array.from(document.querySelectorAll(actors))
-			: Array.isArray(actors)
-			? actors
-			: [actors];
-
 	const onStageCallstack: ((element: ExtendedHTMLElement) => void)[] = [];
 	const leaveStageCallstack: ((element: ExtendedHTMLElement) => void)[] = [];
 
@@ -35,7 +29,7 @@ export function onStage(
 		});
 	}, options);
 
-	_elements.forEach((element) => {
+	select(actors).forEach((element) => {
 		observer.observe(element);
 	});
 
